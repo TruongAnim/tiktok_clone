@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
+import 'package:tiktok_clone/controllers/auth_controller.dart';
 import 'package:tiktok_clone/core/helper/assets_helper.dart';
 import 'package:tiktok_clone/views/widgets/button_widget.dart';
 import 'package:tiktok_clone/views/widgets/input_text_field.dart';
@@ -9,6 +11,14 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  void _register() {
+    authController.registerUser(
+      usernameController.text,
+      emailController.text,
+      passwordController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,24 +37,23 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              const Text(
-                'Register',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
-              ),
+              Obx(() => Text(
+                    AuthController.instance.testString.string,
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
+                  )),
               const SizedBox(
                 height: 15,
               ),
               Stack(
                 children: [
                   Container(
-                    width: 100,
-                    height: 100,
-                    child: const CircleAvatar(
-                      foregroundImage: AssetImage(
-                        AssetsHelper.avatar,
-                      ),
-                    ),
-                  ),
+                      width: 100,
+                      height: 100,
+                      child: const CircleAvatar(
+                        foregroundImage: AssetImage(
+                          AssetsHelper.avatar,
+                        ),
+                      )),
                   Positioned(
                     bottom: -10,
                     right: -10,
@@ -54,7 +63,9 @@ class SignUpScreen extends StatelessWidget {
                           Icons.add_a_photo,
                           size: 30,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          authController.pickImage();
+                        },
                       ),
                     ),
                   ),
@@ -101,8 +112,10 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: ButtonWidget(
-                  onTap: () {},
-                  title: 'Login',
+                  onTap: () {
+                    _register();
+                  },
+                  title: 'Register',
                 ),
               ),
               const SizedBox(
