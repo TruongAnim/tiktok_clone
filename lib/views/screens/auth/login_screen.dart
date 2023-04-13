@@ -7,6 +7,10 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  void _login() {
+    authController.login(emailController.text, passwordController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,30 +26,30 @@ class LoginScreen extends StatelessWidget {
                     color: buttonColor,
                     fontWeight: FontWeight.w900),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
-              Text(
+              const Text(
                 'Login',
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.symmetric(horizontal: 25),
                 child: InputTextField(
                     controller: emailController,
                     label: 'Email',
                     icon: Icons.email),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.symmetric(horizontal: 25),
                 child: InputTextField(
                   controller: passwordController,
                   label: 'Password',
@@ -53,23 +57,25 @@ class LoginScreen extends StatelessWidget {
                   isObsecure: true,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: ButtonWidget(
-                  onTap: () {},
+                  onTap: () {
+                    _login();
+                  },
                   title: 'Login',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Don\'t have an account? ',
                     style: TextStyle(fontSize: 18),
                   ),

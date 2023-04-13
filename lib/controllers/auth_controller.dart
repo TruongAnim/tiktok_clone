@@ -18,8 +18,8 @@ class AuthController extends GetxController {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
       _pickedImage = Rx<File?>(File(image.path));
+      print(_pickedImage!.value);
     }
-    testString.value = 'goodbuye';
   }
 
   Future<String> uploadToStorage(File avatar) async {
@@ -31,6 +31,32 @@ class AuthController extends GetxController {
     TaskSnapshot snap = await uploadTask;
     String urlImage = await snap.ref.getDownloadURL();
     return urlImage;
+  }
+
+  void login(String email, String password) async {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        UserCredential credential = await firebaseAuth
+            .signInWithEmailAndPassword(email: email, password: password);
+        print(credential.user!.uid);
+      } else {
+        Get.showSnackbar(
+          const GetSnackBar(
+            title: 'Login fail !!!',
+            message: 'Please enter all the field!',
+            duration: Duration(seconds: 3),
+          ),
+        );
+      }
+    } catch (e) {
+      Get.showSnackbar(
+        GetSnackBar(
+          title: 'Login fail !!!',
+          message: e.toString(),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    }
   }
 
   void registerUser(String userName, String email, String password) async {
