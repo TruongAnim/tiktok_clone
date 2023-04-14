@@ -41,6 +41,7 @@ dependencies:
   cloud_firestore: ^4.5.1
   firebase_storage: ^11.1.0
   image_picker: ^0.8.7+3
+  video_player: ^2.6.1
 
 dev_dependencies:
   flutter_test:

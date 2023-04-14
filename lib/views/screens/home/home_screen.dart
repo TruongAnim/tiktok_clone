@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/core/helper/assets_helper.dart';
+import 'package:tiktok_clone/views/screens/add_video/add_video_page.dart';
 import 'package:tiktok_clone/views/widgets/navigation_bar_item.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,11 +12,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final pages = [
+    Text('home'),
+    Text('search'),
+    AddVideoPage(),
+    Text('inbox'),
+    Text('me'),
+  ];
   int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Home screen'),
+      body: pages[pageIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
