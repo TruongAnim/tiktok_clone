@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/auth_controller.dart';
+import 'package:tiktok_clone/controllers/upload_controller.dart';
 import 'package:tiktok_clone/firebase_options.dart';
 import 'package:tiktok_clone/views/screens/auth/login_screen.dart';
 import 'package:tiktok_clone/views/screens/auth/sign_up_screen.dart';
@@ -12,6 +13,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) {
     Get.put(AuthController());
+    Get.lazyPut(() => UploadController());
   });
   runApp(const MyApp());
 }
