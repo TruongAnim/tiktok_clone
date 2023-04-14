@@ -37,10 +37,10 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              Obx(() => Text(
-                    AuthController.instance.testString.string,
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
-                  )),
+              const Text(
+                'Register',
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
+              ),
               const SizedBox(
                 height: 15,
               ),

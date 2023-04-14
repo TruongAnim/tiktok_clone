@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) {
-    Get.lazyPut(() => AuthController());
+    Get.put(AuthController());
   });
   runApp(const MyApp());
 }
