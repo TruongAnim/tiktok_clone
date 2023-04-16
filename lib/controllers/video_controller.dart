@@ -1,0 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+import 'package:tiktok_clone/constants.dart';
+import 'package:tiktok_clone/models/video.dart';
+
+class VideoController extends GetxController {
+  Rx<List<Video>> _videoList = Rx<List<Video>>([]);
+
+  List<Video> get videoList => _videoList.value;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    _videoList.bindStream(firebaseStore
+        .collection('videos')
+        .snapshots()
+        .map((QuerySnapshot snapshot) {
+      return snapshot.docs.map((e) => Video.fromSnapshort(e)).toList();
+    }));
+  }
+}

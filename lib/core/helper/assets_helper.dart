@@ -8,4 +8,5 @@ class AssetsHelper {
   static const String inbox = '${iconsPath}inbox.png';
   static const String me = '${iconsPath}me.png';
   static const String search = '${iconsPath}search.png';
+  static const String disc = '${iconsPath}disc.png';
 }
