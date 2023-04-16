@@ -21,6 +21,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   TextEditingController songController = TextEditingController();
   TextEditingController captionController = TextEditingController();
   UploadController uploadController = Get.find();
+
   @override
   void initState() {
     super.initState();
@@ -32,11 +33,17 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    videoPlayerController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           SizedBox(
@@ -48,7 +55,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
             scrollDirection: Axis.vertical,
             child: Column(children: [
               Container(
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 child: InputTextField(
                   label: 'Song',
                   icon: Icons.music_note,
@@ -56,7 +63,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                margin: const EdgeInsets.only(left: 15, right: 15, bottom: 10),
                 child: InputTextField(
                   label: 'Caption',
                   icon: Icons.closed_caption,
@@ -68,7 +75,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   uploadController.uploadVideo(songController.text,
                       captionController.text, widget.videoPath);
                 },
-                child: Text('Share now'),
+                child: const Text('Share now'),
               ),
             ]),
           ),

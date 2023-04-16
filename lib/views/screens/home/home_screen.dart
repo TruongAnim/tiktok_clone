@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/core/helper/assets_helper.dart';
 import 'package:tiktok_clone/views/screens/add_video/add_video_page.dart';
+import 'package:tiktok_clone/views/screens/feeding_video/feeding_screen.dart';
 import 'package:tiktok_clone/views/widgets/navigation_bar_item.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final pages = [
-    Text('home'),
+    FeedingScreen(),
     Text('search'),
     AddVideoPage(),
     Text('inbox'),
