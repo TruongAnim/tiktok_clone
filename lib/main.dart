@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/auth_controller.dart';
+import 'package:tiktok_clone/controllers/comment_controller.dart';
 import 'package:tiktok_clone/controllers/upload_controller.dart';
 import 'package:tiktok_clone/controllers/video_controller.dart';
 import 'package:tiktok_clone/firebase_options.dart';
@@ -15,6 +16,7 @@ void main() async {
     Get.put(AuthController());
     Get.lazyPut(() => UploadController());
     Get.lazyPut(() => VideoController());
+    Get.lazyPut(() => CommentController());
   });
   runApp(const MyApp());
 }

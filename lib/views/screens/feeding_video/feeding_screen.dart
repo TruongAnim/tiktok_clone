@@ -4,6 +4,7 @@ import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/video_controller.dart';
 import 'package:tiktok_clone/core/helper/assets_helper.dart';
 import 'package:tiktok_clone/models/video.dart';
+import 'package:tiktok_clone/views/screens/feeding_video/comment_screen.dart';
 import 'package:tiktok_clone/views/screens/feeding_video/video_player_item.dart';
 import 'package:tiktok_clone/views/widgets/circle_animation.dart';
 
@@ -202,7 +203,14 @@ class _FeedingScreenState extends State<FeedingScreen> {
                                   Column(
                                     children: [
                                       InkWell(
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                            builder: (context) => CommentScreen(
+                                              postId: video.id,
+                                            ),
+                                          ));
+                                        },
                                         child: const Icon(
                                           Icons.comment,
                                           size: 40,
