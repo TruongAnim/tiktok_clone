@@ -14,11 +14,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final pages = [
-    FeedingScreen(),
-    Text('search'),
-    AddVideoPage(),
-    Text('inbox'),
-    Text('me'),
+    const FeedingScreen(),
+    const Text('search'),
+    const AddVideoPage(),
+    const Text('inbox'),
+    const Text('me'),
   ];
   int pageIndex = 0;
   @override

@@ -19,7 +19,7 @@ class ButtonWidget extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
         ),
       ),
     );

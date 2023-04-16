@@ -7,7 +7,6 @@ import 'package:tiktok_clone/controllers/upload_controller.dart';
 import 'package:tiktok_clone/controllers/video_controller.dart';
 import 'package:tiktok_clone/firebase_options.dart';
 import 'package:tiktok_clone/views/screens/auth/login_screen.dart';
-import 'package:tiktok_clone/views/screens/auth/sign_up_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

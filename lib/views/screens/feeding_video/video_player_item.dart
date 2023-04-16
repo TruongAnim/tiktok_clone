@@ -36,7 +36,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
     return Container(
         width: size.width,
         height: size.height,
-        decoration: BoxDecoration(color: Colors.black),
+        decoration: const BoxDecoration(color: Colors.black),
         child: VideoPlayer(videoPlayerController));
   }
 }

@@ -15,6 +15,8 @@ class AuthController extends GetxController {
   late Rx<User?> _currentUser;
   Rx<File?>? _pickedImage;
 
+  User get user => firebaseAuth.currentUser!;
+
   @override
   void onReady() {
     super.onReady();
@@ -27,7 +29,7 @@ class AuthController extends GetxController {
     if (_currentUser.value == null) {
       Get.offAll(() => LoginScreen());
     } else {
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => const HomeScreen());
     }
   }
 

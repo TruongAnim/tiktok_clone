@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
-import 'package:tiktok_clone/controllers/auth_controller.dart';
 import 'package:tiktok_clone/core/helper/assets_helper.dart';
 import 'package:tiktok_clone/views/widgets/button_widget.dart';
 import 'package:tiktok_clone/views/widgets/input_text_field.dart';
@@ -46,10 +44,10 @@ class SignUpScreen extends StatelessWidget {
               ),
               Stack(
                 children: [
-                  Container(
+                  const SizedBox(
                       width: 100,
                       height: 100,
-                      child: const CircleAvatar(
+                      child: CircleAvatar(
                         foregroundImage: AssetImage(
                           AssetsHelper.avatar,
                         ),

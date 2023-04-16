@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/video_controller.dart';
 import 'package:tiktok_clone/core/helper/assets_helper.dart';
 import 'package:tiktok_clone/models/video.dart';
@@ -50,7 +51,7 @@ class _FeedingScreenState extends State<FeedingScreen> {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Container(
+          SizedBox(
             height: 50,
             width: 50,
             child: Image.asset(
@@ -58,7 +59,7 @@ class _FeedingScreenState extends State<FeedingScreen> {
               AssetsHelper.disc,
             ),
           ),
-          Container(
+          SizedBox(
             height: 27,
             width: 27,
             child: ClipRRect(
@@ -177,11 +178,16 @@ class _FeedingScreenState extends State<FeedingScreen> {
                                   Column(
                                     children: [
                                       InkWell(
-                                        onTap: () {},
-                                        child: const Icon(
+                                        onTap: () {
+                                          videoController.like(video.id);
+                                        },
+                                        child: Icon(
                                           Icons.favorite,
                                           size: 40,
-                                          color: Colors.red,
+                                          color: video.likes.contains(
+                                                  authController.user.uid)
+                                              ? Colors.red
+                                              : Colors.white,
                                         ),
                                       ),
                                       Text(

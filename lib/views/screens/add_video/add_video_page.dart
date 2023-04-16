@@ -41,7 +41,7 @@ class AddVideoPage extends StatelessWidget {
                         _pickVideo(ImageSource.gallery, context);
                       },
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Row(children: const [
                           Icon(Icons.image),
                           SizedBox(
@@ -59,7 +59,7 @@ class AddVideoPage extends StatelessWidget {
                           _pickVideo(ImageSource.camera, context);
                         },
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           child: Row(children: const [
                             Icon(Icons.camera),
                             SizedBox(
@@ -76,7 +76,7 @@ class AddVideoPage extends StatelessWidget {
                           Navigator.of(context).pop();
                         },
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           child: Row(children: const [
                             Icon(Icons.cancel),
                             SizedBox(
