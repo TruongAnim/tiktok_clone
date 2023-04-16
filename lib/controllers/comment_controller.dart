@@ -70,4 +70,34 @@ class CommentController extends GetxController {
       );
     }
   }
+
+  void likeComment(String commentId) async {
+    String uid = authController.user.uid;
+    DocumentSnapshot snapshot = await firebaseStore
+        .collection('videos')
+        .doc(_postId)
+        .collection('comments')
+        .doc(commentId)
+        .get();
+    if (((snapshot.data() as Map<String, dynamic>)['likes'] as List)
+        .contains(uid)) {
+      await firebaseStore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc(commentId)
+          .update({
+        'likes': FieldValue.arrayRemove([uid])
+      });
+    } else {
+      await firebaseStore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc(commentId)
+          .update({
+        'likes': FieldValue.arrayUnion([uid])
+      });
+    }
+  }
 }

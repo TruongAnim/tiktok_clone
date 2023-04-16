@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/comment_controller.dart';
 import 'package:tiktok_clone/models/comment.dart';
 import 'package:tiktok_clone/views/widgets/comment_widget.dart';
@@ -29,7 +30,7 @@ class _CommentScreenState extends State<CommentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Comments'),
+        title: const Text('Comments'),
         centerTitle: true,
       ),
       body: Column(
@@ -60,19 +61,25 @@ class _CommentScreenState extends State<CommentScreen> {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Spacer()
+                            const Spacer()
                           ]),
                           Text(TimeAgo.format(
                               (comment.publicDate as Timestamp).toDate())),
                         ]), // replace with real data
 
                     trailing: Column(children: [
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Icon(Icons.favorite),
-                      SizedBox(
-                        height: 3,
+                      IconButton(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        constraints: const BoxConstraints(),
+                        icon: Icon(
+                          Icons.favorite,
+                          color: comment.likes.contains(authController.user.uid)
+                              ? Colors.red
+                              : Colors.white,
+                        ),
+                        onPressed: () {
+                          commentController.likeComment(comment.id);
+                        },
                       ),
                       Text(comment.likes.length.toString()),
                     ]),
@@ -81,7 +88,7 @@ class _CommentScreenState extends State<CommentScreen> {
               );
             }),
           ),
-          Divider(height: 1),
+          const Divider(height: 1),
           CommentWidget(
             controller: _commentController,
             sendEvent: () {
