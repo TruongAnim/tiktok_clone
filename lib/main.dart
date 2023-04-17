@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/auth_controller.dart';
 import 'package:tiktok_clone/controllers/comment_controller.dart';
+import 'package:tiktok_clone/controllers/search_user_controller.dart';
 import 'package:tiktok_clone/controllers/upload_controller.dart';
 import 'package:tiktok_clone/controllers/video_controller.dart';
 import 'package:tiktok_clone/firebase_options.dart';
@@ -17,6 +18,7 @@ void main() async {
     Get.lazyPut(() => UploadController());
     Get.lazyPut(() => VideoController());
     Get.lazyPut(() => CommentController());
+    Get.lazyPut(() => SearchUserController());
   });
   runApp(const MyApp());
 }
