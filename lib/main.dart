@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/auth_controller.dart';
 import 'package:tiktok_clone/controllers/comment_controller.dart';
+import 'package:tiktok_clone/controllers/profile_controller.dart';
 import 'package:tiktok_clone/controllers/search_user_controller.dart';
 import 'package:tiktok_clone/controllers/upload_controller.dart';
 import 'package:tiktok_clone/controllers/video_controller.dart';
@@ -15,10 +16,11 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) {
     Get.put(AuthController());
-    Get.lazyPut(() => UploadController());
-    Get.lazyPut(() => VideoController());
-    Get.lazyPut(() => CommentController());
-    Get.lazyPut(() => SearchUserController());
+    Get.lazyPut(() => UploadController(), fenix: true);
+    Get.lazyPut(() => VideoController(), fenix: true);
+    Get.lazyPut(() => CommentController(), fenix: true);
+    Get.lazyPut(() => SearchUserController(), fenix: true);
+    Get.lazyPut(() => ProfileController(), fenix: true);
   });
   runApp(const MyApp());
 }
