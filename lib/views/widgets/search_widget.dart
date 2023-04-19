@@ -30,10 +30,11 @@ class _SearchWidgetState extends State<SearchWidget> {
       controller: widget._searchController,
       style: TextStyle(color: Colors.black),
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 16),
         hintText: "Search",
         hintStyle: TextStyle(color: Colors.grey[600]),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(25),
           borderSide: BorderSide.none,
         ),
         filled: true,
