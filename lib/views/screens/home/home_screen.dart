@@ -3,6 +3,7 @@ import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/core/helper/assets_helper.dart';
 import 'package:tiktok_clone/views/screens/add_video/add_video_page.dart';
 import 'package:tiktok_clone/views/screens/feeding_video/feeding_screen.dart';
+import 'package:tiktok_clone/views/screens/inbox/conversation_list_screen.dart';
 import 'package:tiktok_clone/views/screens/profile/profile_screen.dart';
 import 'package:tiktok_clone/views/screens/search_user/search_user_screen.dart';
 import 'package:tiktok_clone/views/widgets/navigation_bar_item.dart';
@@ -17,9 +18,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final pages = [
     const FeedingScreen(),
-    SearchUserScreen(),
+    const SearchUserScreen(),
     const AddVideoPage(),
-    const Text('inbox'),
+    const ConversationListScreen(),
     ProfileScreen(uid: authController.user.uid),
   ];
   int pageIndex = 0;
