@@ -70,12 +70,16 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   controller: captionController,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  uploadController.uploadVideo(songController.text,
-                      captionController.text, widget.videoPath);
-                },
-                child: const Text('Share now'),
+              Obx(
+                () => uploadController.isUploading.value
+                    ? CircularProgressIndicator()
+                    : ElevatedButton(
+                        onPressed: () {
+                          uploadController.uploadVideo(songController.text,
+                              captionController.text, widget.videoPath);
+                        },
+                        child: const Text('Share now'),
+                      ),
               ),
             ]),
           ),

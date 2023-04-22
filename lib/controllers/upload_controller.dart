@@ -8,9 +8,14 @@ import 'package:tiktok_clone/models/video.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadController extends GetxController {
+  Rx<bool> isUploading = Rx<bool>(false);
+
   Future<File?> _compressVideo(String videoPath) async {
-    final compressed = await VideoCompress.compressVideo(videoPath,
-        quality: VideoQuality.MediumQuality);
+    final compressed = await VideoCompress.compressVideo(
+      videoPath,
+      quality: VideoQuality.MediumQuality,
+      includeAudio: false,
+    );
     return compressed!.file;
   }
 
@@ -37,14 +42,18 @@ class UploadController extends GetxController {
   }
 
   void uploadVideo(String songName, String caption, String videoPath) async {
+    isUploading.value = true;
     try {
       String uid = firebaseAuth.currentUser!.uid;
+      print('logger:$uid');
       DocumentSnapshot snapshot =
           await firebaseStore.collection('users').doc(uid).get();
       var allDocs = await firebaseStore.collection('videos').get();
       int len = allDocs.docs.length;
       String videoId = 'Video $len';
+      print('logger:$videoId');
       String videoUrl = await _uploadVideoToStorage(videoId, videoPath);
+      print('logger:$videoUrl');
       String thumbnailUrl = await _uploadThumbnailToStorage(videoId, videoPath);
       Video video = Video(
         username: (snapshot.data() as Map<String, dynamic>)['name'],
@@ -61,6 +70,7 @@ class UploadController extends GetxController {
       );
       await firebaseStore.collection('videos').doc(videoId).set(video.toJson());
       print('upload done');
+      isUploading.value = false;
       Get.back();
     } catch (e) {
       Get.showSnackbar(
@@ -70,6 +80,7 @@ class UploadController extends GetxController {
           duration: const Duration(seconds: 3),
         ),
       );
+      isUploading.value = false;
     }
   }
 }
